@@ -9,12 +9,13 @@ export class InMemoryRentRevisionRepository implements RentRevisionRepository {
     const rentNoCharges = 462.34
     const charges = 42
 
-    const { newRentNoCharges, nouveauLoyer } = RentCalculator.calculateNewRent(
-      lastIndex,
-      newIndex,
-      rentNoCharges,
-      charges
-    )
+    const { newRentNoCharges, newRent: nouveauLoyer } =
+      RentCalculator.calculateNewRent(
+        lastIndex,
+        newIndex,
+        rentNoCharges,
+        charges
+      )
 
     // Simuler des données provenant d'une base de données
     return {

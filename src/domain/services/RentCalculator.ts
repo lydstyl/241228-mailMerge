@@ -4,9 +4,9 @@ export class RentCalculator {
     newIndex: number,
     rentNoCharges: number,
     charges: number
-  ): { newRentNoCharges: number; nouveauLoyer: number } {
+  ): { newRentNoCharges: number; newRent: number } {
     const newRentNoCharges = (newIndex * rentNoCharges) / lastIndex
-    const nouveauLoyer = newRentNoCharges + charges
-    return { newRentNoCharges, nouveauLoyer }
+    const newRent = newRentNoCharges + charges
+    return { newRentNoCharges, newRent }
   }
 }
