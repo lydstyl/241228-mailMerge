@@ -1,6 +1,4 @@
-// src/application/DocumentService.ts
-
-import { DocumentData } from '../domain/DocumentData'
+import { DocumentData } from '../../domain/entities/DocumentData'
 import { generateDocument } from '../use-cases/GenerateDocument'
 
 export class DocumentService {

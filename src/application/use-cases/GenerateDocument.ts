@@ -1,6 +1,6 @@
 import * as fs from 'fs'
 import { patchDocument, IPatch, PatchType, TextRun } from 'docx'
-import { DocumentData } from '../domain/DocumentData'
+import { DocumentData } from '../../domain/entities/DocumentData'
 
 const editDocx = async (
   templatePath: string,
