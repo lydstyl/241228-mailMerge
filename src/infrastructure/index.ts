@@ -1,8 +1,8 @@
-import { DocumentService } from './application/services/DocumentService'
-import { DocumentData } from './domain/entities/DocumentData'
+import { DocumentService } from '../application/services/DocumentService'
+import { DocumentData } from '../domain/entities/DocumentData'
 
 // Exemple d'utilisation
-const templatePath = 'src/templates/template.docx'
+const templatePath = 'src/infrastructure/templates/template.docx'
 const outputPath = 'src/infrastructure/output/output.docx'
 
 const ai = 138.61
