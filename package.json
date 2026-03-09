@@ -13,6 +13,7 @@
   "dependencies": {
     "@types/node": "^22.10.2",
     "docx": "^9.1.0",
+    "docx-merger": "^1.2.2",
     "ts-node": "^10.9.2",
     "typescript": "^5.7.2"
   },
