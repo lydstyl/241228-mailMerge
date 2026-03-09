@@ -5,7 +5,7 @@ import { RentCalculator } from '../../domain/services/RentCalculator'
 export class InMemoryRentRevisionRepository implements RentRevisionRepository {
   async getRentRevisionData(): Promise<RentRevisionDocument> {
     const lastIndex = 145.17 // deuxième trimestre 2024
-    const newIndex = 143.46 // deuxième trimestre 2025 ?
+    const newIndex = 146.68 // deuxième trimestre 2025
     const rentNoCharges = 345
     const charges = 50
 

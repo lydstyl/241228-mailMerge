@@ -1,5 +1,5 @@
 import { DocumentService } from '../application/services/DocumentService'
-import { InMemoryRentRevisionRepository } from '../infrastructure/repositories/InMemoryRentRevisionRepository'
+import { InMemoryRentRevisionRepository } from '../infrastructure/repositories/InMemoryMahieuRevisionRepository'
 
 const documentService = new DocumentService()
 const rentRevisionRepository = new InMemoryRentRevisionRepository()
