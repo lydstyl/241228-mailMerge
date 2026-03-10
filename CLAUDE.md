@@ -4,7 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-This is a document generation application (mail merge system) that creates legal documents such as rent revision notices ("révisions de loyer") and demand letters ("mises en demeure") by merging data with DOCX templates. The application is built following Clean Architecture principles with strict separation between domain, application, and infrastructure layers.
+This is a document generation application (mail merge system) that creates various documents by merging data with DOCX templates:
+- Legal documents: rent revision notices ("révisions de loyer") and demand letters ("mises en demeure")
+- Personal documents: birthday invitations for Marie and Louis
+
+The application is built following Clean Architecture principles with strict separation between domain, application, and infrastructure layers.
 
 ## Commands
 
@@ -42,7 +46,10 @@ The codebase follows Clean Architecture with clear layer separation:
 - **services/**: Application services that orchestrate use cases (e.g., `DocumentService` which routes document generation by type)
 
 ### Infrastructure Layer (`src/infrastructure/`)
-- **repositories/**: Concrete implementations of repository interfaces (currently in-memory implementations: `InMemoryRentRevisionRepository`, `InMemoryLeducRentRevisionRepository`, `InMemoryMahieuRevisionRepository`)
+- **repositories/**: Concrete implementations of repository interfaces
+  - Rent revisions: `InMemoryRentRevisionRepository`, `InMemoryLeducRentRevisionRepository`, `InMemoryMahieuRevisionRepository`
+  - Birthday invitations: `InMemoryMarieBirthdayInvitationRepository`, `InMemoryLouisBirthdayInvitationRepository`
+  - Factories: `BirthdayInvitationRepositoryFactory` for selecting the right child's repository
 - **templates/**: DOCX template files organized by document type
 - **output/**: Generated documents are saved here
 - **utils/**: Utility functions, notably `documentUtils.ts` which handles DOCX template patching using the `docx` library
@@ -74,3 +81,43 @@ Templates are DOCX files with placeholder tags matching entity property names (e
 - Repository implementations are currently in-memory; they simulate database responses with hardcoded data
 - Multiple repository implementations exist for different clients (Leduc, Mahieu) representing different data formats/sources
 - The `DocumentService` acts as a factory, routing document generation based on type string ('rent-revision', 'demand-letter')
+
+## Birthday Invitations - Usage Guide
+
+### Switching Between Marie and Louis
+
+To generate birthday invitations for either Marie or Louis, edit the `CHILD` constant in `src/infrastructure/index.ts`:
+
+```typescript
+const CHILD: ChildName = 'marie'  // or 'louis'
+```
+
+Then run:
+```bash
+npm start
+```
+
+### Adding Friends to the Guest List
+
+**For Marie:** Edit `src/infrastructure/repositories/InMemoryMarieBirthdayInvitationRepository.ts`
+- Add friend names to the `friends` array
+- Update the `DATE` field with the actual party date
+
+**For Louis:** Edit `src/infrastructure/repositories/InMemoryLouisBirthdayInvitationRepository.ts`
+- Add friend names to the `friends` array
+- Update the `DATE` field with the actual party date
+
+Example:
+```typescript
+const friends = [
+  'Sélène',
+  'Emma',
+  'Sophie'
+  // Add more friends here
+]
+```
+
+### Output
+
+Generated invitations are saved to `src/infrastructure/output/birthday/`:
+- A consolidated document with all invitations: `invitations-toutes.docx`

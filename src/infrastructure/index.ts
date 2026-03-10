@@ -1,16 +1,21 @@
 // import { DocumentService } from '../application/services/DocumentService'
 // import { InMemoryRentRevisionRepository } from '../infrastructure/repositories/InMemoryMahieuRevisionRepository'
-import { InMemoryBirthdayInvitationRepository } from '../infrastructure/repositories/InMemoryBirthdayInvitationRepository'
+import { BirthdayInvitationRepositoryFactory, ChildName } from '../infrastructure/repositories/BirthdayInvitationRepositoryFactory'
 import { GenerateBirthdayInvitationConsolidated } from '../application/use-cases/GenerateBirthdayInvitationConsolidated'
 
 // const documentService = new DocumentService()
 // const rentRevisionRepository = new InMemoryRentRevisionRepository()
-const birthdayInvitationRepository = new InMemoryBirthdayInvitationRepository()
 
-// Récupérer les données de révision de loyer
+// ===== CONFIGURATION =====
+// Changer ici pour basculer entre 'marie' et 'louis'
+const CHILD: ChildName = 'marie'
+// =========================
+
+const birthdayInvitationRepository = BirthdayInvitationRepositoryFactory.getRepository(CHILD)
+
 async function main() {
   // === GÉNÉRATION DES INVITATIONS D'ANNIVERSAIRE CONSOLIDÉES ===
-  console.log("=== Génération d'un document consolidé avec toutes les invitations ===\n")
+  console.log(`=== Génération des invitations d'anniversaire pour ${CHILD.toUpperCase()} ===\n`)
   const invitations =
     await birthdayInvitationRepository.getBirthdayInvitations()
 

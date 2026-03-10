@@ -1,7 +1,7 @@
 import { BirthdayInvitationRepository } from '../../domain/repositories/BirthdayInvitationRepository'
 import { BirthdayInvitationDocument } from '../../domain/entities/BirthdayInvitationDocument'
 
-export class InMemoryBirthdayInvitationRepository implements BirthdayInvitationRepository {
+export class InMemoryLouisBirthdayInvitationRepository implements BirthdayInvitationRepository {
   async getBirthdayInvitations(): Promise<BirthdayInvitationDocument[]> {
     const friends = [
       'Ulysse',
